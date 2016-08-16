@@ -1,0 +1,56 @@
+Node.JS Notes
+
+Use Cases
+Node.js is a low-level platform designed to provide asychronous event handling.
+This is important to use in DIRTy applications (data intensive real time)
+
+About
+-Node.js itself is low-level web protocol parser
+Any higher level functionality is left to node modules
+and application logic is written on top of the protocol layer
+-Node is based off javascript
+
+
+
+Modules
+Modules are downloaded using npm(node package manager) and utilized with the "require" function such as:
+	var fs = require('fs');
+which includes the common file system package in order to read and write to files. Other
+important packages are 'http', 'tcp', and various small libraries for stream processing
+
+Data Structures
+Streams
+A very common data structure to use for node is streams or buffer arrays which can be seen as arrays
+but instead of being data distributed over space, it is data distributed over time.
+
+-They are utilized when reading files or streams from http requests
+
+Buffers
+By default data is read in as buffers which are Node's version of byte arrays
+
+Parallel Arrays
+
+
+Callbacks
+When an asynchronous task is called, it's functionality is executed in a non-blocking fashion which means  that the scope in which the task was called continutes to run while the function compltetes its task. This is one of the greatest strengths of Node.js which enables scaled computed with many requests. After said task completes, a callback is called. 
+Callbacks are functions called after the non-blocking task is completed. Asychronous tasks are commonly I/O tasks that must wait for data to be read out of a file or a stream. Callbacks are called after a given asychronous function is completed and the data is fully loaded and ready to use.
+
+Hello World
+var http = require('http');
+var server = http.createServer(function (req, res) {
+	res.end('Hello World');
+});
+
+server.listen(process.argv[2]);
+
+Setting Headers
+-Headers can be set for the response message before
+	response.write() or res.end() are called 
+-res.setHeader(field, value) sets header fields to certain values
+Some headers include:
+	-Content-Type
+	-Content-Length
+	-status code is different
+
+Set encoding
+
